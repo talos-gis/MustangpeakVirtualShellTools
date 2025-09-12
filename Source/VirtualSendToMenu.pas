@@ -255,7 +255,7 @@ procedure TVirtualSendToMenu.Populate_TB2000(MenuItem: TTBCustomItem; ItemClass:
     try
       // No messages
       NS.EnumerateFolder(0, False, NonFolders, False, EnumSendToCallback, L);
-      L.Sort(SendToMenuSort);
+      L.Sort(TComparer<TNameSpace>.Construct(SendToMenuSort));
       for I := 0 to L.Count - 1 do begin
         SendToIndex := SendToItems.Add(L[I]);
         M := ItemClass.Create(nil);
